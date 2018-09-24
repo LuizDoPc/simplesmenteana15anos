@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Álbum de fotos</title>
+  <link rel="stylesheet" href="book.css">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Pinyon+Script|La+Belle+Aurore|Slabo+27px' rel='stylesheet' type='text/css'>
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: [ 'Pinyon+Script::latin', 'La+Belle+Aurore::latin', 'Slabo+27px::latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); </script>
+  <script type="text/javascript">
+
+    var imagem = new Array();
+    imagem[0] = "book/1.jpg";
+    imagem[1] = "book/2.jpg";
+    imagem[2] = "book/3.jpg";
+    imagem[3] = "book/4.jpg";
+    imagem[4] = "book/5.jpg";
+    imagem[5] = "book/6.jpg";
+    imagem[6] = "book/7.jpg";
+    imagem[7] = "book/8.jpg";
+    imagem[8] = "book/9.jpg";
+    imagem[9] = "book/10.jpg";
+    imagem[10] = "book/11.jpg";
+    imagem[11] = "book/12.jpg";
+
+    var carregar = new Array();
+
+    function carregarImagens() {
+      for (var i=0; i<imagem.length; i++) {
+        carregar[i] = new Image();
+        carregar[i].src = imagem[i];
+        document.getElementById("imgQuadro").innerHTML = "Carregando...";
+        document.getElementById("imgTumb"+i).innerHTML = "Carregando...";
+        window.setTimeout("verificaCarregamento("+i+")",100);
+      }
+    }
+
+    function verificaCarregamento(imgID) {
+      if(carregar[imgID].complete ) {
+        document.getElementById("imgTumb"+imgID).innerHTML = '<img src="'+carregar[imgID].src+'" width="200vw" height="200vw" onClick=abrirImagem('+imgID+')>';
+        if (imgID == 0) {
+          document.getElementById("imgQuadro").innerHTML = '<img width="75%" height="75%" id="imgQuadro" src="book/capa.jpg">';
+        }
+      }else{
+        window.setTimeout("verificaCarregamento("+imgID+")", 100);
+      }
+    }
+
+    function abrirImagem(imgID) {
+      document.getElementById("imgQuadro").innerHTML = '<img width="75%" height="75%" id="imgQuadro" src="'+imagem[imgID]+'">';
+    }
+
+    window.onload = carregarImagens;
+  </script>
+</head>
+
+<body>
+  <div id="header1">
+    <h1 id="title1">Simplesmente Ana <span id="qa1">15 Anos</span></h1>
+  </div>
+  <div id="nav" align="center">
+    <ul id="in">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="informacao.html">Informações</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="preparativos.html">Preparativos</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+  </div>
+
+
+
+    <center>
+      <table border="1" >
+        <tr>
+          <td align="center"><div id="imgQuadro"></div></td>
+        </tr>
+      </table>
+
+      <br>
+      <table border="1">
+        <tr>
+          <td class="tumbnails"><div id="imgTumb0" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb1" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb2" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb3" class="tumbnails"></div></td>
+        </tr>
+      </table>
+      <table border="1">
+        <tr>
+          <td class="tumbnails"><div id="imgTumb4" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb5" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb6" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb7" class="tumbnails"></div></td>
+        </tr>
+      </table>
+      <table border="1">
+        <tr>
+          <td class="tumbnails"><div id="imgTumb8" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb9" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb10" class="tumbnails"></div></td>
+          <td class="tumbnails"><div id="imgTumb11" class="tumbnails"></div></td>
+
+        </tr>
+      </table>
+    </center>
+</body>
+</html>
